@@ -1283,6 +1283,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallPanels
       objectReference: {fileID: 0}
+    - target: {fileID: 5955579989819191219, guid: 815bcb805e49b0944ab3d17e12b6c06f, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2293773221579818406, guid: 4fc8ad0b6dab93d4b85e8a0aa34d59aa, type: 3}
+    - target: {fileID: 8716547338920627634, guid: 815bcb805e49b0944ab3d17e12b6c06f, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 3876542345217667742, guid: 815bcb805e49b0944ab3d17e12b6c06f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
