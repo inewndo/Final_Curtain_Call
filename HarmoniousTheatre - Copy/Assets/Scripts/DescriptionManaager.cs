@@ -18,10 +18,6 @@ public class DescriptionManaager : MonoBehaviour
     //lock player movemnt and cursor when in dialogue
     private CCPlayer player;
 
-    [Header("Puzzle")]
-    private int PuzzlePiece = 0;
-    public TextMeshProUGUI PiecesCollectedText;
-    public GameObject box;
 
 
     private void Awake()
@@ -123,15 +119,15 @@ public class DescriptionManaager : MonoBehaviour
         //destroy the ouzzle piece which was just interacted with
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 3f))
-        {
-            if (hit.collider.tag == "Interactable")
-            {
-                //destroy puzzle piece as it is collected
-                Destroy(hit.collider.gameObject);
+        //if (Physics.Raycast(ray, out RaycastHit hit, 3f))
+        //{
+        //    if (hit.collider.tag == "Interactable")
+        //    {
+        //        //destroy puzzle piece as it is collected
+        //        Destroy(hit.collider.gameObject);
 
-            }
-        }
+        //    }
+        //}
         isActive = false;
         currentNode = null;
         lineIndex = 0;

@@ -31,6 +31,8 @@ public class CCPlayer : MonoBehaviour
     public Transform camTransform;
     public float LookSens;
 
+    public bool interactPressed;
+    public Interactable currentInteractable;
     public static event Action<ObjectData> OnDescriptionRequested;
     public int startHealth = 10;
     public int currentHealth;
@@ -41,8 +43,8 @@ public class CCPlayer : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         currentHealth = startHealth;
         healthbar.UpdateHpBar(startHealth, currentHealth);
     }
@@ -52,6 +54,7 @@ public class CCPlayer : MonoBehaviour
     {
         CheckGround();
         CameraLook();
+        HandleInteract();
         //camTransform.position = transform.position;
     }
 
@@ -103,6 +106,17 @@ public class CCPlayer : MonoBehaviour
 
         camTransform.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
     }
+    void HandleInteract()
+    {
+        //if the player did not press interact this frame do nothing
+        if (!interactPressed) return;
+        //consume the input so one click only triggers one interactions
+        //this changes next frame
+        interactPressed = false;
+        if (currentInteractable == null) return;
+        currentInteractable.Interact(this);
+    }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -127,10 +141,10 @@ public class CCPlayer : MonoBehaviour
         }
     }
 
-    //public void OnInteract(InputAction.CallbackContext context)
-    //{
-    //    if(context.performed) interactPressed = true;
-    //}
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed) interactPressed = true;
+    }
 
     public void RequestDescription(ObjectData objectData)
     {

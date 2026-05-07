@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class ObjectGrabber : MonoBehaviour
 {
     public float grabRange = 4;
@@ -22,6 +23,8 @@ public class ObjectGrabber : MonoBehaviour
     public int linePoints = 20;
     public float timeIntervalbetweenPoints = 0.1f;
     public float throwSpeed = 10f;
+
+    public LayerMask InteractableMask;
 
     void FixedUpdate()
     {
@@ -60,9 +63,10 @@ public class ObjectGrabber : MonoBehaviour
 
         Debug.DrawRay(transform.position, transform.forward * grabRange, UnityEngine.Color.yellow, 0.5f);
 
-        if (Physics.Raycast(ray, out hit, grabRange))
+        if (Physics.Raycast(ray, out hit, grabRange, InteractableMask))
         {
             InteractableObject interactable = hit.collider.GetComponent<InteractableObject>();
+            Debug.Log(hit.collider.gameObject.name);
 
             if (interactable != null)
             {
@@ -90,6 +94,7 @@ public class ObjectGrabber : MonoBehaviour
 
     void MoveHeldObject()
     {
+
         Vector3 targetPos = holdPoint.position;
         Vector3 currentPos = heldObject.position;
 

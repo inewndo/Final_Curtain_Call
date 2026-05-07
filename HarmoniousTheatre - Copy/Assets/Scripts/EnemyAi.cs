@@ -13,10 +13,10 @@ public class EnemyAi : MonoBehaviour
     public Transform[] patrolPoints; //waypoints
     private int currentPatrolIndex;
     private int health = 20;
-    private float speed = 2f;
+    //private float speed = 2f;
     private float detectionRange = 10f;
     private float attackRange = 1f;
-    private int attackPower = 1;
+    //private int attackPower = 1;
     private float attackCoolDown = 2f;
 
     public int currentHealth;
