@@ -18,7 +18,7 @@ public class PopUP : MonoBehaviour
         if (popupRoutine != null)
             StopCoroutine(popupRoutine);
 
-        popupRoutine = StartCoroutine(HideAfterDelay(4f));
+        popupRoutine = StartCoroutine(HideAfterDelay(1f));
     }
 
     private IEnumerator HideAfterDelay(float delay)
