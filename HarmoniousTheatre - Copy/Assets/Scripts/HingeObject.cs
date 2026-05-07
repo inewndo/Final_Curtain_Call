@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -22,7 +23,10 @@ public class HingeObject : MonoBehaviour
     private bool _maxEventFired = false; 
     private bool _minEventFired = false;
 
-   
+    //public bool unlocked = false;
+    public bool isUnlocked = false;
+    public TextMeshProUGUI promptText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -54,9 +58,14 @@ public class HingeObject : MonoBehaviour
             OnReachMin?.Invoke();
             Debug.Log(gameObject.name + "hinge reached MIN angle");
         }
+      
+        if (isUnlocked && promptText != null && promptText.gameObject.activeSelf)
+        {
+            promptText.gameObject.SetActive(false);
+        }
 
 
-    }
+}
 
     //configure hinge
     //sets up joint limits and spring through code 
@@ -113,6 +122,47 @@ public class HingeObject : MonoBehaviour
         _hinge.motor = motor;
         _hinge.useMotor = true;
     }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (!other.CompareTag("Player")) return;
 
+    //    if (!unlocked)
+    //    {
+    //        if (promptText != null)
+    //        {
+    //            promptText.text = "Find a ticket first";
+    //            promptText.gameObject.SetActive(true);
+    //        }
+    //    }
+    //}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player") && promptText != null)
+    //    {
+    //        promptText.gameObject.SetActive(false);
+    //    }
+    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        if (!isUnlocked)
+        {
+            if (promptText != null)
+            {
+                promptText.text = "Find a ticket first";
+                promptText.gameObject.SetActive(true);
+            }
+        }
+    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (!other.CompareTag("Player")) return;
+
+    //    if (promptText != null)
+    //    {
+    //        promptText.gameObject.SetActive(false);
+    //    }
+   // }
 
 }
