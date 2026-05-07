@@ -15,9 +15,9 @@ public class EnemyAi : MonoBehaviour
     private int health = 20;
     //private float speed = 2f;
     private float detectionRange = 10f;
-    private float attackRange = 1f;
-    //private int attackPower = 1;
-    private float attackCoolDown = 2f;
+    private float attackRange = 3f;
+    private int attackPower = 5;
+    private float attackCoolDown = 5f;
 
     public int currentHealth;
 
@@ -37,8 +37,7 @@ public class EnemyAi : MonoBehaviour
         //find and assign the player
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         currentHealth = health;
-        //currentHealth = startHealth;
-        healthbar.UpdateHealthBar(health, currentHealth);
+        //healthbar.UpdateHealthBar(health, currentHealth);
     }
 
     // Update is called once per frame
@@ -136,7 +135,7 @@ public class EnemyAi : MonoBehaviour
         {
             lastAttackTime = Time.time;
             Debug.Log("Enemy Attacked Player");
-            //FindFirstObjectByType<CCPlayer>().TakeDamage(attackPower);
+            FindFirstObjectByType<CCPlayer>().TakeDamage(attackPower);
         }
     }
 }

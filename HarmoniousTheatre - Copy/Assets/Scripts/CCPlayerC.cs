@@ -1,6 +1,8 @@
 using System;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -34,7 +36,7 @@ public class CCPlayer : MonoBehaviour
     public bool interactPressed;
     public Interactable currentInteractable;
     public static event Action<ObjectData> OnDescriptionRequested;
-    public int startHealth = 10;
+    public int startHealth = 30;
     public int currentHealth;
     [SerializeField] private PlayerHpBar healthbar;
 
@@ -55,7 +57,13 @@ public class CCPlayer : MonoBehaviour
         CheckGround();
         CameraLook();
         HandleInteract();
-        //camTransform.position = transform.position;
+
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("Lose");
+            Debug.Log("Loser");
+            
+        }
     }
 
     void FixedUpdate()
@@ -145,6 +153,8 @@ public class CCPlayer : MonoBehaviour
     {
         if (context.performed) interactPressed = true;
     }
+
+
 
     public void RequestDescription(ObjectData objectData)
     {

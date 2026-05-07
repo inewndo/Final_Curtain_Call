@@ -122,26 +122,7 @@ public class HingeObject : MonoBehaviour
         _hinge.motor = motor;
         _hinge.useMotor = true;
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (!other.CompareTag("Player")) return;
-
-    //    if (!unlocked)
-    //    {
-    //        if (promptText != null)
-    //        {
-    //            promptText.text = "Find a ticket first";
-    //            promptText.gameObject.SetActive(true);
-    //        }
-    //    }
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Player") && promptText != null)
-    //    {
-    //        promptText.gameObject.SetActive(false);
-    //    }
-    //}
+   
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -150,19 +131,10 @@ public class HingeObject : MonoBehaviour
         {
             if (promptText != null)
             {
-                promptText.text = "Find a ticket first";
+                promptText.text = "Find a ticket first and put it in ticket booth!";
                 promptText.gameObject.SetActive(true);
             }
         }
     }
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (!other.CompareTag("Player")) return;
-
-    //    if (promptText != null)
-    //    {
-    //        promptText.gameObject.SetActive(false);
-    //    }
-   // }
-
+    
 }
