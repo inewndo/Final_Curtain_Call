@@ -36,7 +36,7 @@ public class CCPlayer : MonoBehaviour
     public bool interactPressed;
     public Interactable currentInteractable;
     public static event Action<ObjectData> OnDescriptionRequested;
-    public int startHealth = 30;
+    public int startHealth = 40;
     public int currentHealth;
     [SerializeField] private PlayerHpBar healthbar;
 
@@ -61,8 +61,10 @@ public class CCPlayer : MonoBehaviour
         if (currentHealth <= 0)
         {
             SceneManager.LoadScene("Lose");
-            Debug.Log("Loser");
-            
+            Destroy(gameObject);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
         }
     }
 
