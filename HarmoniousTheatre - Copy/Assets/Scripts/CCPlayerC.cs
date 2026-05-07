@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -39,6 +40,9 @@ public class CCPlayer : MonoBehaviour
     public int startHealth = 40;
     public int currentHealth;
     [SerializeField] private PlayerHpBar healthbar;
+   
+
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -180,4 +184,6 @@ public class CCPlayer : MonoBehaviour
         isGrounded = Physics.SphereCast(groundCheck.position, groundCheckRadius, Vector3.down,
             out RaycastHit hit, groundCheckDistance, groundLayer);
     }
+   
 }
+
