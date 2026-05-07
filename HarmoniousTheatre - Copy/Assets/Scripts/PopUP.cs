@@ -1,26 +1,30 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class PopUP : MonoBehaviour
 {
     public GameObject popupUI;
-    public TMP_Text popupText;
+    public TextMeshProUGUI popupText;
+    private Coroutine popupRoutine;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
+        if (!other.CompareTag("Player")) return;
 
-            popupText.text = "Use T to travel between time";
-            popupUI.SetActive(true);
-            
+        popupText.text = "Use T to travel between time";
+        popupUI.SetActive(true);
 
-            CancelInvoke();
-            Invoke(nameof(HidePopup), 4f);
-        }
+        if (popupRoutine != null)
+            StopCoroutine(popupRoutine);
+
+        popupRoutine = StartCoroutine(HideAfterDelay(4f));
     }
 
-    void HidePopup()
+    private IEnumerator HideAfterDelay(float delay)
     {
+        yield return new WaitForSeconds(delay);
+
         popupUI.SetActive(false);
     }
 }
