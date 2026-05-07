@@ -22,7 +22,7 @@ public class HingeObject : MonoBehaviour
     private bool _maxEventFired = false; 
     private bool _minEventFired = false;
 
-
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {

@@ -6,14 +6,14 @@ public class ObjectInteractable : Interactable
         public ObjectData objectData;
 
 
-        public override void Interact(CCPlayer ccplayer)
+    public override void Interact(CCPlayer ccplayer)
+    {
+        if (objectData == null)
         {
-            if (objectData == null)
-            {
-                Debug.Log("object has no data" + gameObject.name);
-            }
-
-            ccplayer.RequestDescription(objectData);
+            Debug.Log("object has no data" + gameObject.name);
         }
-    
+
+        ccplayer.RequestDescription(objectData);
+    }
+
 }

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Ticket
   m_EditorClassIdentifier: Assembly-CSharp::ObjectData
   displayName: Ticket
-  lines: []
+  lines:
+  - Oh it's a ticket!
+  - I should probably have it stamped at the ticket booth.
   choices: []
   nextNode: {fileID: 0}
   icon: {fileID: 21300000, guid: bc576a66bb0f8b44aae03ff385ba1dea, type: 3}

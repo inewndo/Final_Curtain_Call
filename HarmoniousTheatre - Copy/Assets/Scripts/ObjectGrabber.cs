@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -56,11 +57,12 @@ public class ObjectGrabber : MonoBehaviour
         }
     }
 
+   
     void TryGrab()
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-
+        //OnDescriptionRequested?.Invoke(objectData);
         Debug.DrawRay(transform.position, transform.forward * grabRange, UnityEngine.Color.yellow, 0.5f);
 
         if (Physics.Raycast(ray, out hit, grabRange, InteractableMask))
@@ -130,7 +132,7 @@ public class ObjectGrabber : MonoBehaviour
         _isHolding = false;
     }
 
-    public void OnGrabPerformed(InputAction.CallbackContext context)
+    public void OnGrabPerformed(InputAction.CallbackContext context )
     {
         if (!context.performed) return;
         if (_isHolding)

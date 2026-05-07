@@ -43,8 +43,8 @@ public class CCPlayer : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         currentHealth = startHealth;
         healthbar.UpdateHpBar(startHealth, currentHealth);
     }
