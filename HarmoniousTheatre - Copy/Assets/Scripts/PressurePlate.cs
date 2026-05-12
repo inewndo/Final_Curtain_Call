@@ -88,13 +88,13 @@ public class PressurePlate : MonoBehaviour
             CheckActivation();
         }
         //ignore if still being held
-        //if (physObj.isHeld) return;
+        if (physObj.isHeld) return;
 
-        //if (objectsOnPlate.Add(physObj))
-        //{
-        //    currentWeight += physObj.puzzleWeight;
-        //    CheckActivation();
-        //}
+        if (objectsOnPlate.Add(physObj))
+        {
+            currentWeight += physObj.puzzleWeight;
+            CheckActivation();
+        }
     }
 
     private void OnTriggerExit(Collider other)

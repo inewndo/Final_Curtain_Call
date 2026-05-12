@@ -42,19 +42,7 @@ public class ObjectGrabber : MonoBehaviour
         //this is diff from grab raycast
         UpdateHighlight();
 
-        //draw trajectory when left mousebutton held down
-        if (lineRenderer != null)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                DrawTrajectory();
-                lineRenderer.enabled = true;
-            }
-            else
-            {
-                lineRenderer.enabled = false;
-            }
-        }
+        
     }
 
    
@@ -62,7 +50,6 @@ public class ObjectGrabber : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        //OnDescriptionRequested?.Invoke(objectData);
         Debug.DrawRay(transform.position, transform.forward * grabRange, UnityEngine.Color.yellow, 0.5f);
 
         if (Physics.Raycast(ray, out hit, grabRange, InteractableMask))
@@ -138,16 +125,11 @@ public class ObjectGrabber : MonoBehaviour
         if (_isHolding)
         {
             DropObject();
-
-
         }
         else
         {
             TryGrab();
-
         }
-
-
     }
 
     public void OnThrowPerformed(InputAction.CallbackContext context)
@@ -159,16 +141,7 @@ public class ObjectGrabber : MonoBehaviour
         if (_isHolding) ThrowObject();
     }
 
-    void Charge()
-    {
-        if (_isHolding)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-
-            }
-        }
-    }
+  
 
     void DrawTrajectory()
     {
