@@ -143,27 +143,6 @@ public class ObjectGrabber : MonoBehaviour
 
   
 
-    void DrawTrajectory()
-    {
-        Vector3 origin = holdPoint.position;
-        //Vector3 startVelocity = throwSpeed * holdPoint.forward;
-        Vector3 startVelocity = transform.forward * throwforce;
-        lineRenderer.positionCount = linePoints;
-        float time = 0;
-        //calculates x,y coordinates of each point from the time
-        for (int i = 0; i < linePoints; i++)
-        {
-            //s=u*t+1/2*g*t*t
-            var x = (startVelocity.x * time) + (Physics.gravity.x / 2 * time * time);
-            var y = (startVelocity.y * time) + (Physics.gravity.y / 2 * time * time);
-            var z = (startVelocity.z * time) + (Physics.gravity.z / 2 * time * time);
-            Vector3 point = new Vector3(x, y, z);
-            //get current world pos of the point relative to start pos
-            lineRenderer.SetPosition(i, origin + point);
-            time += timeIntervalbetweenPoints;
-        }
-
-    }
 
     void UpdateHighlight()
     {
@@ -201,4 +180,9 @@ public class ObjectGrabber : MonoBehaviour
             }
         }
     }
+
+    //public void RequestDescription(ObjectData objectData)
+    //{
+    //    OnDescriptionRequested?.Invoke(objectData);
+    //}
 }

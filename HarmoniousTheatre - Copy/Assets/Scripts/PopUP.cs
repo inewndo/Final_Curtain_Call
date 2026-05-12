@@ -12,13 +12,13 @@ public class PopUP : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        popupText.text = "Use T to travel between time";
+        popupText.text = "It is so dark here. I should look for control room. It can usually be entered through balcony seating.";
         popupUI.SetActive(true);
 
         if (popupRoutine != null)
             StopCoroutine(popupRoutine);
 
-        popupRoutine = StartCoroutine(HideAfterDelay(1f));
+        popupRoutine = StartCoroutine(HideAfterDelay(3f));
     }
 
     private IEnumerator HideAfterDelay(float delay)

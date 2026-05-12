@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject settingsUI;
     public static bool isPaused = false;
 
     void Update()
@@ -42,6 +43,16 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Settings()
+    {
+        settingsUI.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        settingsUI.SetActive(false);
     }
 
     public void ResumeGame()

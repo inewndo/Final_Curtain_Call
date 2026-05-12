@@ -17,8 +17,7 @@ public class ObjectData : ScriptableObject
     [Header("if there are no choices, auto continue to next node")]
     public ObjectData nextNode;
 
-    public Sprite icon;
-    public int id;
+    
 }
 
 [System.Serializable]
