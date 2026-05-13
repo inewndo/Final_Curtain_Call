@@ -25,6 +25,7 @@ public class ObjectGrabber : MonoBehaviour
     public float timeIntervalbetweenPoints = 0.1f;
     public float throwSpeed = 10f;
 
+    public ObjectData objectData;
     public LayerMask InteractableMask;
 
     void FixedUpdate()
@@ -181,8 +182,30 @@ public class ObjectGrabber : MonoBehaviour
         }
     }
 
-    //public void RequestDescription(ObjectData objectData)
-    //{
-    //    OnDescriptionRequested?.Invoke(objectData);
-    //}
+    void Description(CCPlayer ccplayer)
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward * grabRange, UnityEngine.Color.yellow, 0.5f);
+
+        if (Physics.Raycast(ray, out hit, grabRange, InteractableMask))
+        {
+            if (gameObject.CompareTag("Interactable"))
+            {
+                if (objectData == null)
+                {
+                    Debug.Log(gameObject.name + "has no dialogue");
+                    return; 
+                }
+
+                Request(ccplayer);
+            }
+           
+
+        }
+    }
+    void Request(CCPlayer ccPlayer)
+    {
+        ccPlayer.RequestDescription(objectData);
+    }
 }
