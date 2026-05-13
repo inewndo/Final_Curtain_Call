@@ -28146,9 +28146,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1811957287}
   - component: {fileID: 1811957286}
+  - component: {fileID: 1811957288}
   m_Layer: 0
   m_Name: pngimg.com - ghost_PNG17 (2)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28227,6 +28228,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 555437943}
   m_LocalEulerAnglesHint: {x: 5.238, y: 0, z: 0}
+--- !u!114 &1811957288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811957285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b8e98d33731c94f8820a452d22f5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  objectData: {fileID: 11400000, guid: 7fdf2c07a8f0b304080d7faf5a615c02, type: 2}
 --- !u!1 &1813336236
 GameObject:
   m_ObjectHideFlags: 0
@@ -87798,6 +87812,7 @@ MonoBehaviour:
   linePoints: 20
   timeIntervalbetweenPoints: 0.1
   throwSpeed: 10
+  objectData: {fileID: 0}
   InteractableMask:
     serializedVersion: 2
     m_Bits: 64

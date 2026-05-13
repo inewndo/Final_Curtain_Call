@@ -1,6 +1,11 @@
 using UnityEngine;
 
-public abstract class Interactable : MonoBehaviour
+public  class Interactable : MonoBehaviour
 {
-    public abstract void Interact(CCPlayer ccplayer);
+    public ObjectData objectData;
+
+    public void Dialogue(CCPlayer cCPlayer)
+    {
+        cCPlayer.RequestDescription(objectData);
+    }
 }

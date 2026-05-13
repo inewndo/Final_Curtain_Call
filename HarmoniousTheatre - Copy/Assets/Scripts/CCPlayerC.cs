@@ -128,7 +128,7 @@ public class CCPlayer : MonoBehaviour
         //this changes next frame
         interactPressed = false;
         if (currentInteractable == null) return;
-        currentInteractable.Interact(this);
+        //currentInteractable.Interact(this);
     }
 
 
