@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         
         Time.timeScale = 0f; // Freeze gameplay
-        AudioListener.pause = true; // Pause all audio
+        //AudioListener.pause = true; // Pause all audio
         isPaused = true;
     }
     public void Restart()
