@@ -17,6 +17,9 @@ public class ObjectData : ScriptableObject
     [Header("if there are no choices, auto continue to next node")]
     public ObjectData nextNode;
 
+    public bool spawnobj;
+    public GameObject objecttoSpawn;
+
     
 }
 

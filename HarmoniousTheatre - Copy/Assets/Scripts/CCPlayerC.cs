@@ -46,8 +46,9 @@ public class CCPlayer : MonoBehaviour
     public int startHealth = 40;
     public int currentHealth;
     [SerializeField] private PlayerHpBar healthbar;
-   
 
+    public Collider ghost1;
+    public GameObject ticket;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -81,6 +82,17 @@ public class CCPlayer : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
+        }
+       
+        
+        Ray ray = new Ray(camTransform.position, camTransform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, 3f))
+        {
+            if(hit.collider == ghost1)
+            {
+                ticket.SetActive(true);
+            }
+            
         }
     }
 

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7cff2d3e058eab4eb901a35df2fd8a0, type: 3}
-  m_Name: Spirit1.3.2
+  m_Name: Spirit1.4
   m_EditorClassIdentifier: Assembly-CSharp::ObjectData
-  displayName: You
+  displayName: Ghost?
   lines:
-  - Oh yeah, it seems that the main area is locked. I think I need a ticket?
+  - Of course you need a ticket to see the show! Even first grader knows that.
+  - You can find one behind the wardrobe counter. Consider it a gift
   choices: []
   nextNode: {fileID: 0}

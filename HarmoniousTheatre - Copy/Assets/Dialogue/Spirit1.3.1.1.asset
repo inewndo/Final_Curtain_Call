@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7cff2d3e058eab4eb901a35df2fd8a0, type: 3}
   m_Name: Spirit1.3.1.1
   m_EditorClassIdentifier: Assembly-CSharp::ObjectData
-  displayName: Spirit
+  displayName: Ghost?
   lines:
-  - . . .
-  - Are you okay, dear Visitor?
+  - Is there anything I can help you with?
   choices:
-  - choiceText: Continue screaming
-    nextNode: {fileID: 0}
-  - choiceText: ..Oh, uhm.. yeah, I am alright..
-    nextNode: {fileID: 0}
+  - choiceText: Inquire about a ticket
+    nextNode: {fileID: 11400000, guid: 753b4d32dc89dea4baac7e29cef6808c, type: 2}
   nextNode: {fileID: 0}
