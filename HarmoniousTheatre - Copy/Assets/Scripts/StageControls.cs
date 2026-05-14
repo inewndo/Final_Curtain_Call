@@ -84,7 +84,6 @@ public class StageControls : MonoBehaviour
         
         //when enter trigger pop up ui prompt and buttons to turn on and off stuff (ui is computer screen)
         ComputerUI.SetActive(true);
-        playercc.enabled = false;
         Cursor.lockState = CursorLockMode.None; Cursor.visible = true;
 
         if(Input.GetKeyDown(KeyCode.F))

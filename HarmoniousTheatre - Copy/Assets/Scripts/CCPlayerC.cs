@@ -13,6 +13,7 @@ public class CCPlayer : MonoBehaviour
     public float WalkSpeed = 5f;
     public float RunSpeed = 9f;
     public float JumpForce = 5f;
+    private bool inputDisabled = false;
 
     private bool _JumpReady;
     private bool _IsRunning;
@@ -34,9 +35,13 @@ public class CCPlayer : MonoBehaviour
     public Transform camTransform;
     public float LookSens;
 
+    [Header("Interactable")]
+    public Image reticleImage;
     public bool interactPressed;
     public Interactable currentInteractable;
     public static event Action<ObjectData> OnDescriptionRequested;
+
+    [Header("Health")]
     public int startHealth = 40;
     public int currentHealth;
     [SerializeField] private PlayerHpBar healthbar;
@@ -53,13 +58,19 @@ public class CCPlayer : MonoBehaviour
         Cursor.visible = false;
         currentHealth = startHealth;
         healthbar.UpdateHpBar(startHealth, currentHealth);
+        reticleImage = GameObject.Find("Reticle").GetComponent<Image>();
+        reticleImage.color = new Color(r: 0, g: 0, b: 0, a: 7f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!inputDisabled)
+        {
+            CameraLook();
+            CheckInteract();
+        }
         CheckGround();
-        CameraLook();
         HandleInteract();
 
         if (currentHealth <= 0)
@@ -102,6 +113,35 @@ public class CCPlayer : MonoBehaviour
         {
             _JumpReady = false;
         }
+    }
+
+    void CheckInteract()
+    {
+        //reset reticle image to normal color first
+        if (reticleImage != null) reticleImage.color = new Color(0, 0, 0, .7f);
+        //make a ray that goes straight out of the camera(center of screen)
+        //players eyesight
+        Ray ray = new Ray(camTransform.position, camTransform.forward);
+        //RaycastHit hit;
+        //asking unity if it hit something within 3 units
+        //hit stores what we hit like the collider
+        //bool didHit = Physics.Raycast(ray, out hit, 3);
+        //if (!didHit) return;//if we didn't hit anything start here
+        //if we hit something tagged interactable
+        if (Physics.Raycast(ray, out RaycastHit hit, 3f))
+        {
+            currentInteractable = hit.collider.GetComponent<Interactable>();
+            if (currentInteractable != null && reticleImage != null)
+            {
+                reticleImage.color = Color.red;
+                Debug.DrawRay(camTransform.position, camTransform.forward * 3, Color.blue);
+            }
+            else
+            {
+                Debug.DrawRay(camTransform.position, camTransform.forward * 3, Color.blue);
+            }
+        }
+
     }
     public void CameraLook()
     {
@@ -170,6 +210,17 @@ public class CCPlayer : MonoBehaviour
     {
         currentHealth -= attackPower;
         healthbar.UpdateHpBar(startHealth, currentHealth);
+    }
+
+    public void DisableInput()
+    {
+        inputDisabled = true;
+        moveInput = Vector2.zero;
+        lookInput = Vector2.zero;
+    }
+    public void EnableInput()
+    {
+        inputDisabled = false;
     }
     private void CheckGround()
     {
