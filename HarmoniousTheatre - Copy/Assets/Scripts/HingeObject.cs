@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,9 +25,11 @@ public class HingeObject : MonoBehaviour
     private bool _maxEventFired = false; 
     private bool _minEventFired = false;
 
-    //public bool unlocked = false;
     public bool isUnlocked = false;
-    public TextMeshProUGUI promptText;
+    public GameObject popupUI;
+    public TextMeshProUGUI popupText;
+    private Coroutine popupRoutine;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -47,7 +51,6 @@ public class HingeObject : MonoBehaviour
             _minEventFired = false;
 
             OnReachMax?.Invoke();
-            Debug.Log(gameObject.name + "hinge reached max angle");
 
         } 
         if (!_minEventFired && currentAngle <= minAngle + eventThreshold)
@@ -56,17 +59,15 @@ public class HingeObject : MonoBehaviour
             _maxEventFired = false; 
 
             OnReachMin?.Invoke();
-            Debug.Log(gameObject.name + "hinge reached MIN angle");
-        }
-      
-        if (isUnlocked && promptText != null && promptText.gameObject.activeSelf)
-        {
-            promptText.gameObject.SetActive(false);
-        }
+        }  
+    }
 
+    private IEnumerator HideAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
-}
-
+        popupUI.SetActive(false);
+    }
     //configure hinge
     //sets up joint limits and spring through code 
     void ConfigureHinge()
@@ -129,10 +130,15 @@ public class HingeObject : MonoBehaviour
 
         if (!isUnlocked)
         {
-            if (promptText != null)
+            if (popupText != null)
             {
-                promptText.text = "Find a ticket first and put it in ticket booth!";
-                promptText.gameObject.SetActive(true);
+                popupText.text = "I should look for a ticket";
+                popupUI.SetActive(true);
+
+                if (popupRoutine != null)
+                    StopCoroutine(popupRoutine);
+
+                popupRoutine = StartCoroutine(HideAfterDelay(3f));
             }
         }
     }

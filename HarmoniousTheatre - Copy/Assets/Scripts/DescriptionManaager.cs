@@ -46,7 +46,7 @@ public class DescriptionManaager : MonoBehaviour
     }
     void StartDescription(ObjectData objectData)
     {
-        //player.DisableInput();
+        player.DisableInput();
         if (objectData == null)
         {
             Debug.Log("Data is null");
@@ -116,20 +116,11 @@ public class DescriptionManaager : MonoBehaviour
         //reset dialogue stuff and turn back to the game
         textPannel.SetActive(false);
 
-        //destroy the ouzzle piece which was just interacted with
-        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
-
-        //if (Physics.Raycast(ray, out RaycastHit hit, 3f))
-        //{
-        //    if (hit.collider.tag == "Interactable")
-        //    {
-        //        //destroy puzzle piece as it is collected
-        //        Destroy(hit.collider.gameObject);
-
-        //    }
-        //}
         isActive = false;
         currentNode = null;
         lineIndex = 0;
-        }
+        player.EnableInput();
     }
+    
+    
+}

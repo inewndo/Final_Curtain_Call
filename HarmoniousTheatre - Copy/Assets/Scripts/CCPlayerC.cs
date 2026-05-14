@@ -22,7 +22,6 @@ public class CCPlayer : MonoBehaviour
     private Rigidbody _rb;
 
     private Vector2 moveInput;
-    private Vector2 lookInput;
 
     [Header("Ground check")]
     public LayerMask groundLayer;
@@ -33,7 +32,11 @@ public class CCPlayer : MonoBehaviour
 
     [Header("Camera")]
     public Transform camTransform;
-    public float LookSens;
+    [Header("Camera")]
+    public Transform cameraTransform;
+    public float lookSensativity = 1f;
+    private Vector2 lookInput;
+    private float pitch;
 
     [Header("Interactable")]
     public Image reticleImage;
@@ -144,20 +147,18 @@ public class CCPlayer : MonoBehaviour
     }
     public void CameraLook()
     {
-        if (camTransform == null) return;
+        //horiz rotate player
+        float yaw = lookInput.x * lookSensativity;
+        //vert rotate cam
+        float pitchDelta = lookInput.y * lookSensativity;
 
-        float mouseX = lookInput.x * LookSens * Time.deltaTime;
-        float mouseY = lookInput.y * LookSens * Time.deltaTime;
+        transform.Rotate(eulers: Vector3.up * yaw);
 
-        //left and right
-        _yaw += mouseX;
-        transform.rotation = Quaternion.Euler(0f, _yaw, 0f);
-
-        //vertical rotation (cam only) 
-        _pitch -= mouseY;
-        _pitch = Mathf.Clamp(_pitch, -90f, 90f);
-
-        camTransform.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
+        //accumulate vert rotation
+        pitch -= pitchDelta;
+        //clamp to prevent flipping upside down
+        pitch = Mathf.Clamp(pitch, min: -90, max: 90);
+        cameraTransform.localRotation = Quaternion.Euler(pitch, 0, 0);
     }
     void HandleInteract()
     {
@@ -215,7 +216,8 @@ public class CCPlayer : MonoBehaviour
     {
         inputDisabled = true;
         moveInput = Vector2.zero;
-        lookInput = Vector2.zero;
+        lookInput = Vector2.zero; 
+        reticleImage.color = new Color(0, 0, 0, 0f);
     }
     public void EnableInput()
     {
