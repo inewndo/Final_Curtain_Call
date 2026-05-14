@@ -16,4 +16,6 @@ MonoBehaviour:
   lines:
   - Oh yeah, it seems that the main area is locked. I think I need a ticket?
   choices: []
-  nextNode: {fileID: 0}
+  nextNode: {fileID: 11400000, guid: 017631afc01f4054eb431b36fb42c74c, type: 2}
+  spawnobj: 0
+  objecttoSpawn: {fileID: 0}
