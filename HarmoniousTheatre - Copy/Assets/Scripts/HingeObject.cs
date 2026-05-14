@@ -62,12 +62,7 @@ public class HingeObject : MonoBehaviour
         }  
     }
 
-    private IEnumerator HideAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        popupUI.SetActive(false);
-    }
+   
     //configure hinge
     //sets up joint limits and spring through code 
     void ConfigureHinge()
@@ -142,5 +137,11 @@ public class HingeObject : MonoBehaviour
             }
         }
     }
-    
+    private IEnumerator HideAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        popupUI.SetActive(false);
+    }
+
 }

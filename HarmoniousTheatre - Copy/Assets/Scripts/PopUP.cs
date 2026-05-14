@@ -26,5 +26,6 @@ public class PopUP : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         popupUI.SetActive(false);
+        Destroy(gameObject);
     }
 }

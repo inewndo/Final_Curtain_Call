@@ -17,4 +17,6 @@ MonoBehaviour:
   - Of course you need a ticket to see the show! Even first grader knows that.
   - You can find one behind the wardrobe counter. Consider it a gift
   choices: []
-  nextNode: {fileID: 0}
+  nextNode: {fileID: 11400000, guid: 0e8bb30cc7885424ea1a05e7fc3e0fa7, type: 2}
+  spawnobj: 0
+  objecttoSpawn: {fileID: 0}

@@ -10,6 +10,7 @@ public class ObjectInteractable : Interactable
         if (objectData == null)
         {
             Debug.Log("object has no data" + gameObject.name);
+
         }
 
         ccplayer.RequestDescription(objectData);

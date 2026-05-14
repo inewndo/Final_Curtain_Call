@@ -41,14 +41,18 @@ public class CCPlayer : MonoBehaviour
     public bool interactPressed;
     public Interactable currentInteractable;
     public static event Action<ObjectData> OnDescriptionRequested;
+    public Transform holdPoint;
+    public Collider ghost1;
+    public GameObject ticket;
+    public bool hasTicket = false;
+
 
     [Header("Health")]
     public int startHealth = 40;
     public int currentHealth;
     [SerializeField] private PlayerHpBar healthbar;
 
-    public Collider ghost1;
-    public GameObject ticket;
+    
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
