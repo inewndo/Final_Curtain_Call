@@ -120,7 +120,6 @@ public class CCPlayer : MonoBehaviour
         //reset reticle image to normal color first
         if (reticleImage != null) reticleImage.color = new Color(0, 0, 0, .7f);
         //make a ray that goes straight out of the camera(center of screen)
-        //players eyesight
         Ray ray = new Ray(camTransform.position, camTransform.forward);
         //RaycastHit hit;
         //asking unity if it hit something within 3 units
@@ -168,10 +167,10 @@ public class CCPlayer : MonoBehaviour
         //this changes next frame
         interactPressed = false;
         if (currentInteractable == null) return;
-        //currentInteractable.Interact(this);
+        currentInteractable.Interact(this);
     }
 
-
+    #region PLAYERINPUT
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
@@ -200,7 +199,7 @@ public class CCPlayer : MonoBehaviour
         if (context.performed) interactPressed = true;
     }
 
-
+    #endregion
 
     public void RequestDescription(ObjectData objectData)
     {
