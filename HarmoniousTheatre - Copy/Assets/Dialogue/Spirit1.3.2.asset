@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7cff2d3e058eab4eb901a35df2fd8a0, type: 3}
-  m_Name: Spirit1.2
+  m_Name: Spirit1.3.2
   m_EditorClassIdentifier: Assembly-CSharp::ObjectData
   displayName: Spirit
   lines:

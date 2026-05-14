@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectData
   displayName: You
   lines:
-  - Wtf a ghost
+  - AAAAAAA! Ghost!!
   choices: []
   nextNode: {fileID: 11400000, guid: 068a2d6c6e7f0a64cb4330cddf92c273, type: 2}
